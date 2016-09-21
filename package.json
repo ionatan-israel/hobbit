@@ -9,12 +9,28 @@
   "contributors": [
     "Angel Calderaro <calderaro94@gmail.com>"
   ],
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
   "description": "API REST generator for Node/Express",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2016": "^6.11.3",
+    "babel-preset-stage-0": "^6.5.0"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
   "homepage": "https://github.com/jrperdomoz/hobbit#readme",
-  "keywords": [],
+  "keywords": [
+    "express",
+    "rest",
+    "api"
+  ],
   "license": "ISC",
-  "main": "index.js",
+  "main": "bin/hobbit",
   "name": "hobbit",
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jrperdomoz/hobbit.git"
