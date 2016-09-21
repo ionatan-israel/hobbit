@@ -1,0 +1,26 @@
+{
+  "author": "Jonatan Rodriguez <jrperdomoz@gmail.com>",
+  "bin": {
+    "hobbit": "./bin/hobbit"
+  },
+  "bugs": {
+    "url": "https://github.com/jrperdomoz/hobbit/issues"
+  },
+  "contributors": [
+    "Angel Calderaro <calderaro94@gmail.com>"
+  ],
+  "description": "API REST generator for Node/Express",
+  "homepage": "https://github.com/jrperdomoz/hobbit#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "hobbit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrperdomoz/hobbit.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
