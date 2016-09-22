@@ -1,7 +1,7 @@
-import { buildFoldersAsync } from './helpers'
 import chalk from 'chalk'
 import pkg from '../package.json'
 import program from 'commander'
+import { buildFoldersAsync } from './helpers'
 
 program
   .version(pkg.version)
