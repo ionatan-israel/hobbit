@@ -17,8 +17,7 @@
     "bluebird": "^3.4.6",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
-    "copy-dir": "^0.3.0",
-    "mkdirp": "^0.5.1"
+    "mkdir-p": "0.0.7"
   },
   "description": "API REST generator for Node/Express",
   "engines": {
