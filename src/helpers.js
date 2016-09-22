@@ -3,6 +3,7 @@ import bluebird from 'bluebird'
 import fs from 'fs'
 import mkdirp from 'mkdir-p'
 import path from 'path'
+import chalk from 'chalk'
 import structure from './structure'
 const mkdirAsync = bluebird.promisify(mkdirp)
 const readFile = bluebird.promisify(fs.readFile)
@@ -13,7 +14,6 @@ const ROOT_DIR = path.join(__dirname)
 const TEMPLATES_DIR = path.join(ROOT_DIR, 'templates')
 
 const execAsync = (command, dir) => {
-  console.log(dir)
   process.chdir(dir)
   return new Promise((resolve, reject) => {
     exec(command, (err, stdout, stderr) => {
@@ -46,7 +46,10 @@ const createFiles = (dir) => {
     }
   }
   bluebird.all(fromDest.map((file) => readFile(file._from).then((content) => writeFile(`${file.to}`, content).catch((err) => console.log(err)))))
-  .then(() => createPackageJson(dir))
+  .then(() => {
+    console.log(chalk.yellow('Installings dependencies...'))
+    createPackageJson(dir)
+  })
 }
 
 export const buildFoldersAsync = (base) =>
