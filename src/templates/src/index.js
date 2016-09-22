@@ -19,7 +19,7 @@ MongooseConnection().then((mongoose) => {
   .use(json())
   .use(mongoose.middleware)
   .use(morgan('dev'))
-  .use('/api', router)
+  .use('/', router)
   .use('/static', express.static('/tmp/uploads')) // for recreational purposes only ;)
 
   server.listen(3002, () => console.log('listening por 3002'))
