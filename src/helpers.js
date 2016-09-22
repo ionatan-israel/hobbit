@@ -27,8 +27,6 @@ const createFiles = (dir) => {
   bluebird.all(fromDest.map((file) => readFile(file._from).then((content) => writeFile(`${file.to}`, content).catch((err) => console.log(err)))))
 }
 
-// let fileList = files.map((file) => ({ _from: `${TEMPLATES_DIR}/files/${file}`, to: `${dir}/src/${file}` }))
-
 export const buildFoldersAsync = (base) =>
   bluebird.all(FOLDERS.map((i) => `${base}/src/${i}`).map((folder) => mkdirAsync(folder).then(console.log(`${folder} creado!`))))
   .then(() => createFiles(base))
