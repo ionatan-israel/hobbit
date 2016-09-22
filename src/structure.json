@@ -1,0 +1,25 @@
+{
+  "controllers": [
+    "index.js"
+  ],
+  "files": [
+    ".babelrc",
+    ".gitignore",
+    "index.js"
+  ],
+  "helpers": [
+    "MongooseConnection.js",
+    "upload.js"
+  ],
+  "middlewares": [
+    "authorize.js",
+    "errors.js"
+  ],
+  "models": [
+    "index.js"
+  ],
+  "src": [
+    "index.js",
+    "router.js"
+  ]
+}
