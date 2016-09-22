@@ -14,7 +14,6 @@ const ROOT_DIR = path.join(__dirname)
 const TEMPLATES_DIR = path.join(ROOT_DIR, 'templates')
 
 const execAsync = (command, dir) => {
-  process.chdir(dir)
   return new Promise((resolve, reject) => {
     exec(command, (err, stdout, stderr) => {
       if (err) return reject(err)
@@ -24,11 +23,16 @@ const execAsync = (command, dir) => {
 }
 
 const createPackageJson = (dir) => {
+  process.chdir(dir)
   execAsync('npm init -y', dir)
-  .then(
-    execAsync('npm i -S body-parser bcrypt-nodejs bcrypt babel-register babel-preset-stage-0 babel-preset-es2016 babel-preset-es2015 boom chalk express jsonwebtoken mongoose bluebird validator slug morgan cors cookie-parser', dir)
-    .then(execAsync('npm i -D babel-eslint nodemon standard', dir))
-  )
+  .then(() => {
+    console.log('Instalando dependencias de produccion')
+    execAsync('npm i -S connect-multiparty body-parser bcrypt-nodejs bcrypt babel-register babel-preset-stage-0 babel-preset-es2016 babel-preset-es2015 boom chalk express jsonwebtoken mongoose bluebird validator slug morgan cors cookie-parser', dir)
+    .then(() => {
+      console.log('Instalando dependencias de desarrollo')
+      execAsync('npm i -D babel-eslint nodemon standard', dir)
+    })
+  })
   .catch((err) => console.log(err))
 }
 
@@ -37,12 +41,12 @@ const createFiles = (dir) => {
   for (let key in structure) {
     if (key === 'files') {
       fromDest.push(...structure.files.map((file) => ({ _from: `${TEMPLATES_DIR}/${key}/${file}`, to: `${dir}/${file}` })))
-    } else {
-      if (key === 'src') {
-        fromDest.push(...structure.src.map((file) => ({ _from: `${TEMPLATES_DIR}/${key}/${file}`, to: `${dir}/${key}/${file}` })))
-      } else {
-        fromDest.push(...structure[key].map((file) => ({ _from: `${TEMPLATES_DIR}/${key}/${file}`, to: `${dir}/src/${key}/${file}` })))
-      }
+    }
+    if (key === 'src') {
+      fromDest.push(...structure.src.map((file) => ({ _from: `${TEMPLATES_DIR}/${key}/${file}`, to: `${dir}/${key}/${file}` })))
+    }
+    if (!['files', 'src'].includes(key)) {
+      fromDest.push(...structure[key].map((file) => ({ _from: `${TEMPLATES_DIR}/${key}/${file}`, to: `${dir}/src/${key}/${file}` })))
     }
   }
   bluebird.all(fromDest.map((file) => readFile(file._from).then((content) => writeFile(`${file.to}`, content).catch((err) => console.log(err)))))

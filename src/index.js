@@ -1,10 +1,7 @@
-// const mkdirAsync = Promise.promisify(fs.mkdirSync)
-// import fs from 'fs'
-// import Promise from 'bluebird'
+import { buildFoldersAsync } from './helpers'
 import chalk from 'chalk'
 import pkg from '../package.json'
 import program from 'commander'
-import { buildFoldersAsync } from './helpers'
 
 program
   .version(pkg.version)
@@ -14,7 +11,7 @@ program
 
 const FIRST = program.args[0] || null
 const SECOND = program.args[1] || null
-// const THIRD = program.args[2] || null
+const THIRD = program.args[2] || null
 
 const newScaffold = () => {
   //
@@ -35,11 +32,8 @@ const main = () => {
   }
 
   if (['new', 'generate'].includes(FIRST.toLowerCase())) {
-    if (FIRST.toLowerCase() === 'new') {
-      newAPI()
-    } else {
-      newScaffold()
-    }
+    if (FIRST.toLowerCase() === 'new') newAPI()
+    if (SECOND === 'scaffold') newScaffold()
   } else console.log(chalk.red(FIRST + ' no es un arg válido!'))
 }
 
