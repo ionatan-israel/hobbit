@@ -33,7 +33,7 @@
   ],
   "license": "ISC",
   "main": "bin/hobbit",
-  "name": "hobbit",
+  "name": "the-hobbit",
   "preferGlobal": true,
   "repository": {
     "type": "git",
