@@ -1,6 +1,7 @@
 {
   "controllers": [
-    "index.js"
+    "index.js",
+    "users.js"
   ],
   "files": [
     ".babelrc",
@@ -16,7 +17,8 @@
     "errors.js"
   ],
   "models": [
-    "index.js"
+    "index.js",
+    "users.js"
   ],
   "src": [
     "index.js",
