@@ -11,7 +11,7 @@ import router from './router'
 const app = express()
 const server = http.createServer(app)
 
-MongooseConnection().then((mongoose) => {
+MongooseConnection('tmpNameDatabase').then((mongoose) => {
   app
   .use(cookies())
   .use(cors())
