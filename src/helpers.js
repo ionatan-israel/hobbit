@@ -31,6 +31,10 @@ const createPackageJson = (dir) => {
     .then(() => {
       console.log('Instalando dependencias de desarrollo')
       execAsync('npm i -D babel-eslint nodemon standard', dir)
+      .then(() => {
+        console.log('Creando .gitignore file!')
+        execAsync('gitignore node')
+      })
     })
   })
   .catch((err) => console.log(err))
