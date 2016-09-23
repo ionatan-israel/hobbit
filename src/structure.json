@@ -5,7 +5,6 @@
   ],
   "files": [
     ".babelrc",
-    ".gitignore",
     "index.js"
   ],
   "helpers": [
