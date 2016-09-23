@@ -27,13 +27,13 @@ const createPackageJson = (dir) => {
   execAsync('npm init -y', dir)
   .then(() => {
     console.log('Instalando dependencias de produccion')
-    execAsync('npm i -S connect-multiparty body-parser bcrypt-nodejs bcrypt babel-register babel-preset-stage-0 babel-preset-es2016 babel-preset-es2015 boom chalk express jsonwebtoken mongoose bluebird validator slug morgan cors cookie-parser', dir)
+    execAsync('npm i -S gitignore connect-multiparty body-parser bcrypt-nodejs bcrypt babel-register babel-preset-stage-0 babel-preset-es2016 babel-preset-es2015 boom chalk express jsonwebtoken mongoose bluebird validator slug morgan cors cookie-parser', dir)
     .then(() => {
       console.log('Instalando dependencias de desarrollo')
       execAsync('npm i -D babel-eslint nodemon standard', dir)
       .then(() => {
         console.log('Creando .gitignore file!')
-        execAsync('gitignore node')
+        execAsync('./node_modules/gitignore/bin/gitignore.js node')
       })
     })
   })
