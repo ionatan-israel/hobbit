@@ -15,5 +15,5 @@ hobbit new apiBlog
 
 ###### Create an new Scaffold (Soon)
 ```shell
-./bin/hobbit generate scaffold categories
+hobbit generate scaffold categories
 ```
