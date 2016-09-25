@@ -65,12 +65,17 @@ export const buildFoldersAsync = (base) =>
   .then(() => createFiles(base))
   .catch((err) => console.log(err))
 
-export const createModel = (module) => `import mongoose, {Schema} from 'mongoose'
-  const ${module}Shema = Schema({
+export const createModel = (module) => {
+  let contentModel = `import mongoose, {Schema} from 'mongoose'
+
+const ${module}Shema = Schema({
   name: String
 }, { timestamps: true, versionKey: false })
-  export default mongoose.model('${module}', ${module}Schema, '${module}s')
-  `
+
+export default mongoose.model('${module}', ${module}Schema, '${module}s')
+`
+  writeFile(`./src/controllers/${module}s.js`, contentModel)
+}
 
 export const createControllers = (module) => {
   let contentController = `import boom from 'boom'

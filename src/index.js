@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import pkg from '../package.json'
 import program from 'commander'
-import { buildFoldersAsync, createControllers } from './helpers'
+import { buildFoldersAsync, createControllers, createModel } from './helpers'
 
 program
   .version(pkg.version)
@@ -14,6 +14,7 @@ const SECOND = program.args[1] || null
 const THIRD = program.args[2] || null
 
 const newScaffold = () => {
+  createModel(THIRD)
   createControllers(THIRD)
 }
 
