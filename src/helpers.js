@@ -64,3 +64,26 @@ export const buildFoldersAsync = (base) =>
   bluebird.all(FOLDERS.map((i) => `${base}/src/${i}`).map((folder) => mkdirAsync(folder).then(console.log(`${folder} creado!`))))
   .then(() => createFiles(base))
   .catch((err) => console.log(err))
+
+export const createModel = (module) => `import mongoose, {Schema} from 'mongoose'
+  const ${module}Shema = Schema({
+  name: String
+}, { timestamps: true, versionKey: false })
+  export default mongoose.model('${module}', ${module}Schema, '${module}s')
+  `
+
+export const createControllers = (module) => {
+  let contentController = `import boom from 'boom'
+
+export const list = (req, res, next) =>
+  req.models.${module}.find({})
+  .then((${module}) => res.json(${module}))
+  .catch((err) => next(boom.wrap(err, 500)))
+
+export const create = (req, res, next) =>
+  req.models.${module}.create(req.body)
+  .then((${module}) => res.json(${module}))
+  .catch((err) => next(boom.wrap(err, 400)))
+`
+  writeFile(`./src/controllers/${module}s.js`, contentController)
+}
