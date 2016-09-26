@@ -20,4 +20,4 @@ program
 
 if (program.new) newAPI()
 if (program.scaffold) scaffold()
-if (!program.new && !program.scaffold) console.log(chalk.red('usage: hobbit -n newapi'))
+if (!program.new && !program.scaffold) program.outputHelp(chalk.red)
