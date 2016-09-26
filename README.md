@@ -13,7 +13,7 @@ npm install the-hobbit
 hobbit new apiBlog
 ```
 
-###### Create an new Scaffold (Soon)
+###### Create an new Scaffold
 ```shell
-hobbit generate scaffold categories
+hobbit generate scaffold category
 ```
