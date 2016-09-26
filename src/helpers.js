@@ -56,7 +56,7 @@ const createFiles = (dir) => {
   bluebird.all(fromDest.map((file) => readFile(file._from).then((content) => writeFile(`${file.to}`, content).catch((err) => console.log(err)))))
   .then(() => {
     console.log(chalk.yellow('Installings dependencies...'))
-    // createPackageJson(dir)
+    createPackageJson(dir)
   })
 }
 
