@@ -18,6 +18,6 @@ program
   .option('-s, --scaffold', 'hobbit [-s] || [--scaffold] category')
   .parse(process.argv)
 
+if ((!program.new && !program.scaffold) || (program.args.length < 1)) program.outputHelp(chalk.red)
 if (program.new) newAPI()
 if (program.scaffold) scaffold()
-if (!program.new && !program.scaffold) program.outputHelp(chalk.red)
