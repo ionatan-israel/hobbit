@@ -4,6 +4,7 @@ import fs from 'fs'
 import pluralize from 'pluralize'
 
 const writeFile = bluebird.promisify(fs.writeFile)
+const SCHEMA_TYPES = ['String', 'Number', 'Date', 'Buffer', 'Boolean', 'Mixed', 'Objectid', 'Array']
 
 export const factoryModels = (module) => {
   let contentModel = `import mongoose, {Schema} from 'mongoose'
