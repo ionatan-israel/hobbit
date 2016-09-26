@@ -10,10 +10,10 @@ npm install the-hobbit
 ## Usage
 ###### Create an new API REST project
 ```shell
-hobbit new apiBlog
+hobbit -n apiBlog
 ```
 
 ###### Create an new Scaffold
 ```shell
-hobbit generate scaffold category
+hobbit -s category
 ```
