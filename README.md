@@ -4,7 +4,7 @@ An API REST generator for Node/Express
 ## Instalation
 
 ```shell
-npm install the-hobbit
+npm install -g the-hobbit
 ```
 
 ## Usage
