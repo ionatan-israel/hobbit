@@ -15,5 +15,5 @@ hobbit -n apiBlog
 
 ###### Create an new CRUD
 ```shell
-hobbit -s category
+hobbit -c category
 ```

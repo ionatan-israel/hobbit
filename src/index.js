@@ -15,7 +15,7 @@ program
   .version(pkg.version)
   .usage('[options] [dir]')
   .option('-n, --new', 'hobbit [-n] || [--new] newapi')
-  .option('-c, --crud', 'hobbit [-s] || [--crud] category')
+  .option('-c, --crud', 'hobbit [-c] || [--crud] category')
   .parse(process.argv)
 
 if ((!program.new && !program.crud) || (program.args.length < 1)) program.outputHelp(chalk.red)
